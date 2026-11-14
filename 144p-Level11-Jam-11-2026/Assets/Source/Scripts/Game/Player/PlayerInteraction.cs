@@ -72,6 +72,7 @@ public class PlayerInteraction : MonoBehaviour, IDisposable
             return;
 
         _currentInteractable?.Interact(_root);
+        ClearInteraction();
     }
 
     private void SetCurrentInteractable(IInteractable interactable)

@@ -10,11 +10,11 @@
       "hash": "01ca82e814f243c31359b480544633ebf21e34fa"
     },
     "com.icepiecesgames.framework.core": {
-      "version": "https://github.com/kuskildinov/IcePiecesGames-Unity-Framework.git?path=/Packages/com.icepiecesgames.framework.core#framework-v0.11.0",
+      "version": "https://github.com/kuskildinov/IcePiecesGames-Unity-Framework.git?path=/Packages/com.icepiecesgames.framework.core#framework-v0.11.1",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "b408371695f7a67f80f06967dabc93ec970a36e4"
+      "hash": "6642989ba1b4e590484ba6fcda2398553bc68945"
     },
     "com.icepiecesgames.framework.input": {
       "version": "https://github.com/kuskildinov/IcePiecesGames-Unity-Framework.git?path=/Packages/com.icepiecesgames.framework.input#input-v0.1.0",

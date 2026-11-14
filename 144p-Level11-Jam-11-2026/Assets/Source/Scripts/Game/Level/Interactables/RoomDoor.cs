@@ -6,6 +6,7 @@ public class RoomDoor : MonoBehaviour, IInteractable
     [SerializeField] private bool _isActive;
 
     public bool IsActive { get => _isActive; set => _isActive = value; }
+    public bool IsOpen { get; set; }
     public string InteractionText { get => _interactionText; set => _interactionText = value; }
 
     public void Initialize()
@@ -15,6 +16,13 @@ public class RoomDoor : MonoBehaviour, IInteractable
 
     public void Interact(Player player)
     {
-        Debug.Log("Дверь открыта");
+        if(IsOpen)
+        {
+            Debug.Log("Выходим");
+        }
+        else
+        {
+            Debug.Log("Дверь закрыта");
+        }       
     }
 }

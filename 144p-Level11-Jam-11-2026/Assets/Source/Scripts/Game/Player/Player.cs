@@ -12,9 +12,10 @@ public class Player : MonoBehaviour, IDisposable
     [SerializeField] private PlayerInteraction _interaction;
     [Header("Other")]
     [SerializeField] private CinemachineVirtualCamera _playerCam;
+    [SerializeField] private GameObject _lampLight;
 
     private PlayerRoot _root;
-
+       
     private IInputService _inputService;
     private IEventBus _eventBus;
 
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour, IDisposable
 
     public void Initialize(PlayerRoot root, IInputService inputService, IEventBus eventBus)
     {
-        _root = root;
+        _root = root;       
         _inputService = inputService;
         _eventBus = eventBus;
 
@@ -41,6 +42,23 @@ public class Player : MonoBehaviour, IDisposable
     {
         _isActive = value;
     }
+
+    #region >>> LAMP LIGHT
+
+    public void ToggleLampLight(bool value)
+    {
+        _lampLight.gameObject.SetActive(value);
+    }
+
+    #endregion
+    #region >>> INVENTORY
+
+    public void TryTakeItem(IPickupable item)
+    {
+        _root.OnItemPickedUp(item);
+    }
+
+    #endregion
 
     public void Dispose()
     {

@@ -15,13 +15,15 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
 
     private IInputService _inputService;
     private IEventBus _eventBus;
-    
+   
     public void Compose()
     {
         _inputService = Context.GetService<IInputService>();
         _eventBus = Context.GetService<IEventBus>();
 
-        _player.Initialize(this, _inputService, _eventBus);
+       
+        _player.Initialize(this,_inputService, _eventBus);
+        _interface.Initialize(this, _eventBus);
     }
 
     public void Run()
@@ -40,17 +42,33 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
         _player.ToggleActivation(value);
     }
     #endregion
+    #region >>> ITEMS
+
+    public void OnItemPickedUp(IPickupable item)
+    {
+        _eventBus.Publish(new ItemPickUpEvent(item));
+    }
+
+    #endregion
     #region >>> INTERFACE
 
     public void TogglePlayerInput(bool value)
     {
         string newProfile = value ? FirstPersonInputProfileName : DefaultUIInputProfileName;
         _inputService.SetProfile(newProfile);
+
+        ToggleCursor(!value);
     }
 
     private void ToggleInterfaceVisual(bool value)
     {
         _interface.ToggleVisibility(value);
+    }
+
+    private void ToggleCursor(bool value)
+    {
+        Cursor.visible = value;
+        Cursor.lockState = value? CursorLockMode.None: CursorLockMode.Locked;
     }
 
     #endregion
@@ -90,6 +108,16 @@ public readonly struct InteractiorDetectedEvent
 public readonly struct InteractorLostEvent
 {
    
+}
+
+public readonly struct ItemPickUpEvent
+{
+    public readonly IPickupable PickupItem;
+
+    public ItemPickUpEvent(IPickupable item)
+    {
+        PickupItem = item;
+    }
 }
 
 

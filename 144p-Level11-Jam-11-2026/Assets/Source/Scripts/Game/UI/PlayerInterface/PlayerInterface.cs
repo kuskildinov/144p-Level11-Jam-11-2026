@@ -10,15 +10,15 @@ public class PlayerInterface : MonoBehaviour, IDisposable
 
     private PlayerRoot _root;
 
-    private IEventBus _eventBus;   
+    private IEventBus _eventBus;
+    private readonly SubscriptionBag _subscriptionBag = new SubscriptionBag();
 
     public void Initialize(PlayerRoot root, IEventBus eventBus)
     {
         _root = root;
-        _eventBus = eventBus;      
-       
+        _eventBus = eventBus;
+
         ToggleInteractionInfo(false);
-        SubscribeToEvents();
     }
 
     public void ToggleVisibility(bool value)
@@ -35,17 +35,28 @@ public class PlayerInterface : MonoBehaviour, IDisposable
         _interactionInfo.ToggleVisibility(value, info);
     }
 
-    #endregion      
+    #endregion  
     #region >>> EVETNS
 
     public void SubscribeToEvents()
     {
-       
+        _subscriptionBag.Subscribe<InteractiorDetectedEvent>(_eventBus, OnInteractorDetected);
+        _subscriptionBag.Subscribe<InteractorLostEvent>(_eventBus, OnInteractorLost);
     }
 
     public void UnsubscribeFromEvents()
     {
-      
+        _subscriptionBag.Clear();
+    }
+
+    private void OnInteractorDetected(InteractiorDetectedEvent eventData)
+    {
+        ToggleInteractionInfo(true, eventData.InteractorText);
+    }
+
+    private void OnInteractorLost(InteractorLostEvent eventData)
+    {
+        ToggleInteractionInfo(false);
     }
    
     #endregion
