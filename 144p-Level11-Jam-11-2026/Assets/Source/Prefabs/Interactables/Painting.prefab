@@ -191,9 +191,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6122a28be4199154c961c83685a08f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Painting
-  _interactionText: "\u0423\u0431\u0440\u0430\u0442\u044C \u043D\u0430 \u0441\u0442\u043E\u043B"
+  _interactionText: "\u041E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C"
   _itemId: 
-  _icon: {fileID: 0}
+  _inspectionVisual: {fileID: 0}
+  _actionText: "\u041F\u043E\u043B\u043E\u0436\u0438\u0442\u044C \u043D\u0430 \u0441\u0442\u043E\u043B"
 --- !u!65 &7275255402390669082
 BoxCollider:
   m_ObjectHideFlags: 0

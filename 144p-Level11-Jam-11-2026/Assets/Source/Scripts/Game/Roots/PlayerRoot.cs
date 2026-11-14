@@ -1,32 +1,33 @@
-using IcePiecesGames.Framework.Audio;
+
 using IcePiecesGames.Framework.Core.Events;
 using IcePiecesGames.Framework.Core.Lifecycle;
 using IcePiecesGames.Framework.Input;
-using System;
 using UnityEngine;
 
 public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
 {
     private const string FirstPersonInputProfileName = "FirstPerson";
     private const string InspectionInputProfileName = "Inspection";
+    private const string ItemInspectionProfileName = "ItemInspection";
     private const string DefaultUIInputProfileName = "UIOnly";
 
     [SerializeField] private Player _player;
     [SerializeField] private PlayerInterface _interface;
+    [SerializeField] private ItemInspectionController _itemInspection;
 
     private IInputService _inputService;
     private IEventBus _eventBus;
-   
+
+    public IInputService InputService => _inputService;
+
     public void Compose()
     {
         _inputService = Context.GetService<IInputService>();
         _eventBus = Context.GetService<IEventBus>();
 
-       
-        _player.Initialize(this,_inputService, _eventBus);
+        _player.Initialize(this, _inputService, _eventBus);
         _interface.Initialize(this, _eventBus);
-
-        TogglePlayerActivation(false);
+        _itemInspection.Initialize();
     }
 
     public void Run()
@@ -34,22 +35,23 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
         SubscribeToEvents();
         TogglePlayerInput(true);
         ToggleInterfaceVisual(true);
+        _player.ToggleActivation(true);
     }
 
-    #region >>> PLAYER
+    #region PLAYER
 
     public void TogglePlayerActivation(bool value)
     {
         _player.ToggleActivation(value);
     }
+
     #endregion
-    #region >>> TABLE
+    #region TABLE
 
     public void EnterInspectionMode()
     {
         _player.ToggleActivation(false);
         _inputService.SetProfile(InspectionInputProfileName);
-
         ToggleCursor(true);
         ToggleInterfaceVisual(false);
     }
@@ -58,37 +60,47 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
     {
         _inputService.SetProfile(FirstPersonInputProfileName);
         _player.ToggleActivation(true);
-
         ToggleCursor(false);
         ToggleInterfaceVisual(true);
     }
 
     #endregion
-    #region >>> ITEMS
+    #region ITEM INSPECTION
+
+    public void EnterItemInspectionMode()
+    {
+        _player.ToggleActivation(false);
+        _inputService.SetProfile(ItemInspectionProfileName);
+        ToggleCursor(true);
+        ToggleInterfaceVisual(false);
+    }
+
+    public void ExitItemInspectionMode()
+    {
+        _inputService.SetProfile(FirstPersonInputProfileName);
+        _player.ToggleActivation(true);
+        ToggleCursor(false);
+        ToggleInterfaceVisual(true);
+    }
+
+    #endregion
+    #region ITEMS
 
     public void OnItemPickedUp(IPickupable item)
     {
         _eventBus.Publish(new ItemPickUpEvent(item));
     }
 
-    public void OnKeyTaked()
-    {
-        _interface.OnItemTaked();
-    }
-
-    public void ShowInteractionMessage(string msg)
-    {
-        _interface.ShowInteractionMessage(msg);
-    }
-
     #endregion
-    #region >>> INTERFACE
+    #region INTERFACE
 
     public void TogglePlayerInput(bool value)
     {
-        string newProfile = value ? FirstPersonInputProfileName : DefaultUIInputProfileName;
-        _inputService.SetProfile(newProfile);
+        string newProfile = value
+            ? FirstPersonInputProfileName
+            : DefaultUIInputProfileName;
 
+        _inputService.SetProfile(newProfile);
         ToggleCursor(!value);
     }
 
@@ -100,11 +112,13 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
     private void ToggleCursor(bool value)
     {
         Cursor.visible = value;
-        Cursor.lockState = value? CursorLockMode.None: CursorLockMode.Locked;
+        Cursor.lockState = value
+            ? CursorLockMode.None
+            : CursorLockMode.Locked;
     }
 
     #endregion
-    #region >>> EVENTS
+    #region EVENTS
 
     private void SubscribeToEvents()
     {
@@ -114,14 +128,13 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
     private void UnSubscribeToEvents()
     {
         _interface.UnsubscribeFromEvents();
-    }  
-   
+    }
+
     #endregion
 
     public void Shutdown()
     {
         UnSubscribeToEvents();
-
         _player.Dispose();
         _interface.Dispose();
     }
@@ -139,7 +152,6 @@ public readonly struct InteractiorDetectedEvent
 
 public readonly struct InteractorLostEvent
 {
-   
 }
 
 public readonly struct ItemPickUpEvent
@@ -151,6 +163,3 @@ public readonly struct ItemPickUpEvent
         PickupItem = item;
     }
 }
-
-
-
