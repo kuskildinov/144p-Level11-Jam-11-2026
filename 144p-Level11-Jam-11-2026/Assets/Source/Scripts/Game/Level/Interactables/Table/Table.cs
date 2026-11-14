@@ -1,5 +1,4 @@
 using IcePiecesGames.Framework.Core.Events;
-using IcePiecesGames.Framework.Input;
 using UnityEngine;
 
 public class Table : Interactable

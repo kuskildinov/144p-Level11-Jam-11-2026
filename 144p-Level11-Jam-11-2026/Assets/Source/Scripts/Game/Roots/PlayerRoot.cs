@@ -2,6 +2,7 @@
 using IcePiecesGames.Framework.Core.Events;
 using IcePiecesGames.Framework.Core.Lifecycle;
 using IcePiecesGames.Framework.Input;
+using System;
 using UnityEngine;
 
 public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
@@ -54,6 +55,11 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
         _inputService.SetProfile(InspectionInputProfileName);
         ToggleCursor(true);
         ToggleInterfaceVisual(false);
+    }
+
+    public void OnKeyTaked()
+    {
+        _interface.OnItemTaked();
     }
 
     public void ExitInspectionMode()

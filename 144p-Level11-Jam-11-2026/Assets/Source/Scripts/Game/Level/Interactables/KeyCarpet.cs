@@ -10,10 +10,12 @@ public class KeyCarpet : Interactable
 
     public override void Initialize(RoomRoot root)
     {
-        _normalVisual.gameObject.SetActive(true);
-        _opendVisual.gameObject.SetActive(false);
+        _key.Initialize(root);
         _key.IsActive = false;
         IsActive = false;
+
+        _normalVisual.gameObject.SetActive(true);
+        _opendVisual.gameObject.SetActive(false);
     }
 
     public override void Interact(Player player)

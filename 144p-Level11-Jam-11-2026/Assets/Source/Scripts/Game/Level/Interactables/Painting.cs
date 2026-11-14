@@ -37,10 +37,7 @@ public class Painting : Interactable, IPickupable, IInspectable
 
         _player = player;
 
-        _inspectionController.Open(
-            this,
-            _inspectionVisual
-        );
+        _inspectionController.Open(this,_inspectionVisual);
     }
 
     public void ExecuteInspectionAction()

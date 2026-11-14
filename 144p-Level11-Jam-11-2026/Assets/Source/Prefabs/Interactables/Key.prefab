@@ -78,7 +78,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Key
   _interactionText: "\u0412\u0437\u044F\u0442\u044C"
-  _isActive: 0
+  _door: {fileID: 0}
+  _inspectionVisual: {fileID: 4438260136365844577, guid: 487f83dff8e14b946ad0314365b352bf, type: 3}
+  _actionText: "\u0412\u0437\u044F\u0442\u044C \u0432 \u0440\u0443\u043A\u0443"
 --- !u!1 &4513424256819398045
 GameObject:
   m_ObjectHideFlags: 0

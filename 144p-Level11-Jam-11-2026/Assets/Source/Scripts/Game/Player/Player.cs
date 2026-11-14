@@ -60,7 +60,7 @@ public class Player : MonoBehaviour, IDisposable
 
     public void OnKeyTaked()
     {
-       // _root.OnKeyTaked();
+       _root.OnKeyTaked();
     }
 
     #endregion
