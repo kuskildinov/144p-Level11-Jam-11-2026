@@ -19,6 +19,7 @@ public class Table : Interactable
     {
         _root = root;
         _eventBus = _root.EventBus;
+        IsActive = false;
 
         _tableCamera.gameObject.SetActive(false);
         ToggleAllDraggablesVisibility(false);
