@@ -6,23 +6,7 @@ using UnityEngine.UI;
 
 public class CodeLock : Interactable
 {
-    [Serializable]
-    public class DigitSection
-    {
-        public Button UpButton;
-        public Button DownButton;
-
-        public Text CurrentText;
-        public Text NextText;
-
-        [Range(0, 9)]
-        public int StartDigit;
-
-        [NonSerialized] public Sequence Animation;
-        [NonSerialized] public int Value;
-        [NonSerialized] public Vector2 CurrentPosition;
-        [NonSerialized] public Vector2 NextPosition;
-    }
+    private const string AnimatorOpenParam = "Open";
 
     [SerializeField] private GameObject _lockCamera;
     [Header("Code")]
@@ -36,8 +20,9 @@ public class CodeLock : Interactable
     [SerializeField] private float _scrollDuration = 0.18f;
     [SerializeField] private Ease _scrollEase = Ease.OutCubic;
 
-    [Header("Success")]    
-    [SerializeField] private UnityEvent _onCodeCorrect;
+    [Header("Success")]
+    [SerializeField] private RoomDoor _door;
+    [SerializeField] private Animator _animator;
 
     private readonly int[] _digits = new int[5];
 
@@ -265,7 +250,8 @@ public class CodeLock : Interactable
     {
         Debug.Log("CodeLock: Correct code!");
 
-        _onCodeCorrect?.Invoke();
+        _door.IsOpen = true;
+        _animator.SetBool(AnimatorOpenParam, true);
     }
 
     public void ResetLock()
@@ -311,4 +297,22 @@ public class CodeLock : Interactable
                 section.DownButton.onClick.RemoveAllListeners();
         }
     }
+}
+
+[Serializable]
+public class DigitSection
+{
+    public Button UpButton;
+    public Button DownButton;
+
+    public Text CurrentText;
+    public Text NextText;
+
+    [Range(0, 9)]
+    public int StartDigit;
+
+    [NonSerialized] public Sequence Animation;
+    [NonSerialized] public int Value;
+    [NonSerialized] public Vector2 CurrentPosition;
+    [NonSerialized] public Vector2 NextPosition;
 }

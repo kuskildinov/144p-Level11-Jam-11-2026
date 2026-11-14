@@ -398,6 +398,7 @@ GameObject:
   - component: {fileID: 7657895460639384569}
   - component: {fileID: 1736668459652663562}
   - component: {fileID: 5327255456883689668}
+  - component: {fileID: 160044448731479490}
   m_Layer: 6
   m_Name: CodeLock
   m_TagString: Untagged
@@ -470,9 +471,8 @@ MonoBehaviour:
   _scrollDistance: 400
   _scrollDuration: 0.18
   _scrollEase: 9
-  _onCodeCorrect:
-    m_PersistentCalls:
-      m_Calls: []
+  _door: {fileID: 0}
+  _animator: {fileID: 160044448731479490}
 --- !u!65 &1736668459652663562
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -512,6 +512,28 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _rayDistance: 20
+--- !u!95 &160044448731479490
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6943646234178046843}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 37408c5c2d79ba64580b52fe5435fde4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &275004782605875006
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -34,19 +34,16 @@ public class Board : Interactable
         if (_dragController != null)
             _dragController.IsActive = false;
 
-        //foreach (BoardItem item in _items)
-        //{
-        //    if (item == null)
-        //        continue;
+        foreach (BoardItem item in _items)
+        {
+            if (item == null || item == _items[0])
+                continue;
 
-        //    item.gameObject.SetActive(false);
-        //}
+            item.gameObject.SetActive(false);
+        }
 
         _subscriptionBag.Clear();
-        _subscriptionBag.Subscribe<ItemPickUpEvent>(
-            _eventBus,
-            OnItemPickedUp
-        );
+        _subscriptionBag.Subscribe<ItemPickUpEvent>(_eventBus,OnItemPickedUp);
     }
 
     public override void Interact(Player player)

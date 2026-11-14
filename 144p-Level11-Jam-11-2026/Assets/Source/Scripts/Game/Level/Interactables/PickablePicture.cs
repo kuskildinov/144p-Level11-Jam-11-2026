@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class Painting : Interactable, IPickupable, IInspectable
+public class PickablePicture : Interactable, IPickupable, IInspectable
 {
     [Header("Item Data")]
     [SerializeField] private string _itemId;
