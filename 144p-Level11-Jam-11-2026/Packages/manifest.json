@@ -1,6 +1,11 @@
 {
   "dependencies": {
+    "com.icepiecesgames.framework.audio": "https://github.com/kuskildinov/IcePiecesGames-Unity-Framework.git?path=/Packages/com.icepiecesgames.framework.audio#audio-v0.1.0",
+    "com.icepiecesgames.framework.core": "https://github.com/kuskildinov/IcePiecesGames-Unity-Framework.git?path=/Packages/com.icepiecesgames.framework.core#framework-v0.11.0",
+    "com.icepiecesgames.framework.input": "https://github.com/kuskildinov/IcePiecesGames-Unity-Framework.git?path=/Packages/com.icepiecesgames.framework.input#input-v0.1.0",
+    "com.icepiecesgames.framework.ui": "https://github.com/kuskildinov/IcePiecesGames-Unity-Framework.git?path=/Packages/com.icepiecesgames.framework.ui#ui-v0.1.0",
     "com.unity.ai.navigation": "2.0.12",
+    "com.unity.cinemachine": "2.10.7",
     "com.unity.collab-proxy": "2.12.4",
     "com.unity.ide.rider": "3.0.39",
     "com.unity.ide.visualstudio": "2.0.27",
