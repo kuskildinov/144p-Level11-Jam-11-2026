@@ -60,15 +60,15 @@ public class Player : MonoBehaviour, IDisposable
 
     public void OnKeyTaked()
     {
-
+        _root.OnKeyTaked();
     }
 
     #endregion
-    #region >>> CAM
+    #region >>> INTERACTOR MSG
 
-    public void TogglePlayerCam(bool value)
+    public void ShowInteractionMessage(string msg)
     {
-
+        _root.ShowInteractionMessage(msg);
     }
 
     #endregion

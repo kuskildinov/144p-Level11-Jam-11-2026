@@ -25,6 +25,8 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
        
         _player.Initialize(this,_inputService, _eventBus);
         _interface.Initialize(this, _eventBus);
+
+        TogglePlayerActivation(false);
     }
 
     public void Run()
@@ -32,8 +34,6 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
         SubscribeToEvents();
         TogglePlayerInput(true);
         ToggleInterfaceVisual(true);
-
-        _player.ToggleActivation(true);
     }
 
     #region >>> PLAYER
@@ -69,6 +69,16 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
     public void OnItemPickedUp(IPickupable item)
     {
         _eventBus.Publish(new ItemPickUpEvent(item));
+    }
+
+    public void OnKeyTaked()
+    {
+        _interface.OnItemTaked();
+    }
+
+    public void ShowInteractionMessage(string msg)
+    {
+        _interface.ShowInteractionMessage(msg);
     }
 
     #endregion

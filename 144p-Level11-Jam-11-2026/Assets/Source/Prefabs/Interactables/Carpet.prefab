@@ -260,7 +260,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KeyCarpet
   _interactionText: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C"
-  _isActive: 0
   _normalVisual: {fileID: 198144646050737465}
   _opendVisual: {fileID: 6552824267531674221}
   _key: {fileID: 5698594729166910945}
@@ -300,7 +299,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &479359246211619515
 Transform:
   m_ObjectHideFlags: 0

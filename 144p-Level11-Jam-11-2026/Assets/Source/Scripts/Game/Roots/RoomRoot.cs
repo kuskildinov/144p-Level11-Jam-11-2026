@@ -4,6 +4,7 @@ using IcePiecesGames.Framework.Input;
 using UnityEngine;
 
 [DependsOn(typeof(PlayerRoot))]
+[DependsOn(typeof(LevelRoot))]
 public class RoomRoot : FrameworkRoot, IComposable, IShutdownable
 {
     [Header("References")]
@@ -13,6 +14,7 @@ public class RoomRoot : FrameworkRoot, IComposable, IShutdownable
 
     private IEventBus _eventBus;
     private PlayerRoot _playerRoot;
+    private LevelRoot _levelRoot;
     private IInputService _inputService;
 
     public IEventBus EventBus => _eventBus;
@@ -20,6 +22,8 @@ public class RoomRoot : FrameworkRoot, IComposable, IShutdownable
     public void Compose()
     {
         _playerRoot = Context.GetRoot<PlayerRoot>();
+        _levelRoot = Context.GetRoot<LevelRoot>();
+
         _inputService = Context.GetService<IInputService>();
         _eventBus = Context.GetService<IEventBus>();
 
@@ -57,6 +61,15 @@ public class RoomRoot : FrameworkRoot, IComposable, IShutdownable
         if (_dragController != null) 
             _dragController.IsActive = false;
     }
+
+    #region >>> SCENE MANAGER
+
+    public void TryLoadNextLevel()
+    {
+        _levelRoot.TryLoadNextLevel();
+    }
+
+    #endregion
 
     public void Shutdown()
     {

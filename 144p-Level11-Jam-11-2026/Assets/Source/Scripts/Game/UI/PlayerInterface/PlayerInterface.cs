@@ -7,6 +7,7 @@ public class PlayerInterface : MonoBehaviour, IDisposable
 {
     [SerializeField] private GameObject _panel;
     [SerializeField] private InteractionInfoPanel _interactionInfo;
+    [SerializeField] private GameObject _itemIcon;
 
     private PlayerRoot _root;
 
@@ -17,6 +18,7 @@ public class PlayerInterface : MonoBehaviour, IDisposable
     {
         _root = root;
         _eventBus = eventBus;
+        _itemIcon.gameObject.SetActive(false);
 
         ToggleInteractionInfo(false);
     }
@@ -28,11 +30,21 @@ public class PlayerInterface : MonoBehaviour, IDisposable
         ToggleInteractionInfo(false);
     }
 
+    public void OnItemTaked()
+    {
+        _itemIcon.gameObject.SetActive(true);
+    }
+
     #region >>> INTERACTION INFO
 
     public void ToggleInteractionInfo(bool value, string info = "")
     {
         _interactionInfo.ToggleVisibility(value, info);
+    }
+
+    public void ShowInteractionMessage(string msg)
+    {
+        _interactionInfo.ShowMessage(msg);
     }
 
     #endregion  

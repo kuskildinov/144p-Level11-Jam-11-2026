@@ -1,24 +1,26 @@
 using UnityEngine;
 
 public class RoomDoor : Interactable
-{   
-    public bool IsOpen { get; set; }
+{
+    [SerializeField] private string _doorCloseMessage = "Заперто";
+    private RoomRoot _root;
 
+    public bool IsOpen { get; set; }
    
     public override void Initialize(RoomRoot root)
     {
-       
+        _root = root;
     }
 
     public override void Interact(Player player)
     {
         if(IsOpen)
         {
-            Debug.Log("Выходим");
+            _root.TryLoadNextLevel();
         }
         else
         {
-            Debug.Log("Дверь закрыта");
+            player.ShowInteractionMessage(_doorCloseMessage);
         }       
     }
 
