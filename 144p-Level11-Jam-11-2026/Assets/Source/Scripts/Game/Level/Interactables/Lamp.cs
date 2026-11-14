@@ -1,22 +1,18 @@
 using UnityEngine;
 
-public class Lamp : MonoBehaviour, IInteractable
-{
-    [SerializeField] private string _interactionText;
-    [SerializeField] private bool _isActive;
+public class Lamp : Interactable
+{    
     [SerializeField] private GameObject _light;
+       
+    public bool IsSwitchOn { get; set; } = false;  
 
-    public bool IsActive { get => _isActive; set => _isActive = value; }
-    public bool IsSwitchOn { get; set; } = false;
-    public string InteractionText { get => _interactionText; set => _interactionText = value; }
-
-    public void Initialize()
+    public override void Initialize(RoomRoot root)
     {
         ToggleLight(false);
         _interactionText = "Зажечь лампу";
     }
 
-    public void Interact(Player player)
+    public override void Interact(Player player)
     {
         if (IsSwitchOn)
         {
@@ -34,5 +30,10 @@ public class Lamp : MonoBehaviour, IInteractable
     {
         _light.gameObject.SetActive(value);
         IsSwitchOn = value;
+    }
+
+    public override void Dispose()
+    {
+
     }
 }

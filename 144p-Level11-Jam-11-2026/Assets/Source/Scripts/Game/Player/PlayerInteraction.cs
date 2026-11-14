@@ -15,7 +15,7 @@ public class PlayerInteraction : MonoBehaviour, IDisposable
 
     private IEventBus _eventsBus;
     private IInputService _inputService;
-    private IInteractable _currentInteractable;
+    private Interactable _currentInteractable;
 
     private bool _isDisposed;
 
@@ -49,12 +49,12 @@ public class PlayerInteraction : MonoBehaviour, IDisposable
 
     private void FindInteractable()
     {
-        IInteractable detectedInteractable = null;
+        Interactable detectedInteractable = null;
 
         Ray ray = new Ray(_playerCam.transform.position, _playerCam.transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, _interactionDistance, _interactionMask, QueryTriggerInteraction.Ignore))
         {
-            if (hit.transform.TryGetComponent<IInteractable>(out IInteractable interactable))
+            if (hit.transform.TryGetComponent<Interactable>(out Interactable interactable))
             {
                 if (!interactable.IsActive)
                     return;
@@ -75,7 +75,7 @@ public class PlayerInteraction : MonoBehaviour, IDisposable
         ClearInteraction();
     }
 
-    private void SetCurrentInteractable(IInteractable interactable)
+    private void SetCurrentInteractable(Interactable interactable)
     {
         // Объект не изменился
         if (ReferenceEquals(_currentInteractable, interactable))
@@ -96,7 +96,7 @@ public class PlayerInteraction : MonoBehaviour, IDisposable
         }
     }
 
-    private void OnInteractorDetected(IInteractable interactable)
+    private void OnInteractorDetected(Interactable interactable)
     {
         _eventsBus.Publish(new InteractiorDetectedEvent(_currentInteractable.InteractionText));
     }

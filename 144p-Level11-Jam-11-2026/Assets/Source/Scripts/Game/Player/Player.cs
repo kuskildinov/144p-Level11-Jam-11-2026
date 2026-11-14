@@ -58,6 +58,19 @@ public class Player : MonoBehaviour, IDisposable
         _root.OnItemPickedUp(item);
     }
 
+    public void OnKeyTaked()
+    {
+
+    }
+
+    #endregion
+    #region >>> CAM
+
+    public void TogglePlayerCam(bool value)
+    {
+
+    }
+
     #endregion
 
     public void Dispose()

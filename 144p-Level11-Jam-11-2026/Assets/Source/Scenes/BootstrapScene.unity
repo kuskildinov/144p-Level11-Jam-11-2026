@@ -747,6 +747,8 @@ MonoBehaviour:
   _profiles:
   - _profileName: FirstPerson
     _actionMapName: FirstPerson
+  - _profileName: Inspection
+    _actionMapName: Inspection
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

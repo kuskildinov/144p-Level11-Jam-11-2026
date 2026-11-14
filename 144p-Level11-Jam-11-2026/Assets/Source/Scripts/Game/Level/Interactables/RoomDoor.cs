@@ -1,20 +1,16 @@
 using UnityEngine;
 
-public class RoomDoor : MonoBehaviour, IInteractable
-{
-    [SerializeField] private string _interactionText;
-    [SerializeField] private bool _isActive;
-
-    public bool IsActive { get => _isActive; set => _isActive = value; }
+public class RoomDoor : Interactable
+{   
     public bool IsOpen { get; set; }
-    public string InteractionText { get => _interactionText; set => _interactionText = value; }
 
-    public void Initialize()
+   
+    public override void Initialize(RoomRoot root)
     {
-
+       
     }
 
-    public void Interact(Player player)
+    public override void Interact(Player player)
     {
         if(IsOpen)
         {
@@ -24,5 +20,10 @@ public class RoomDoor : MonoBehaviour, IInteractable
         {
             Debug.Log("Дверь закрыта");
         }       
+    }
+
+    public override void Dispose()
+    {
+
     }
 }

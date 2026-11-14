@@ -8,6 +8,7 @@ using UnityEngine;
 public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
 {
     private const string FirstPersonInputProfileName = "FirstPerson";
+    private const string InspectionInputProfileName = "Inspection";
     private const string DefaultUIInputProfileName = "UIOnly";
 
     [SerializeField] private Player _player;
@@ -41,6 +42,27 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
     {
         _player.ToggleActivation(value);
     }
+    #endregion
+    #region >>> TABLE
+
+    public void EnterInspectionMode()
+    {
+        _player.ToggleActivation(false);
+        _inputService.SetProfile(InspectionInputProfileName);
+
+        ToggleCursor(true);
+        ToggleInterfaceVisual(false);
+    }
+
+    public void ExitInspectionMode()
+    {
+        _inputService.SetProfile(FirstPersonInputProfileName);
+        _player.ToggleActivation(true);
+
+        ToggleCursor(false);
+        ToggleInterfaceVisual(true);
+    }
+
     #endregion
     #region >>> ITEMS
 

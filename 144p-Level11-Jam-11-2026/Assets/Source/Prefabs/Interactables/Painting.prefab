@@ -191,8 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6122a28be4199154c961c83685a08f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Painting
-  _interactionText: 
-  _isActive: 0
+  _interactionText: "\u0423\u0431\u0440\u0430\u0442\u044C \u043D\u0430 \u0441\u0442\u043E\u043B"
   _itemId: 
   _icon: {fileID: 0}
 --- !u!65 &7275255402390669082
