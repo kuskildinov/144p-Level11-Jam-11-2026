@@ -70,6 +70,11 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
         ToggleInterfaceVisual(true);
     }
 
+    public void ShowInteractionMessage(string msg)
+    {
+        _interface.ShowInteractionMessage(msg);
+    }
+
     #endregion
     #region ITEM INSPECTION
 

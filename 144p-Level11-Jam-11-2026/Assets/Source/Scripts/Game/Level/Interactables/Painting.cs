@@ -5,7 +5,7 @@ public class Painting : Interactable, IPickupable, IInspectable
 {
     [Header("Item Data")]
     [SerializeField] private string _itemId;
-
+    
     [Header("Inspection")]
     [SerializeField] private GameObject _inspectionVisual;
     [SerializeField] private string _actionText = "Положить на стол";
@@ -37,7 +37,7 @@ public class Painting : Interactable, IPickupable, IInspectable
 
         _player = player;
 
-        _inspectionController.Open(this,_inspectionVisual);
+        _inspectionController.Open(this, _inspectionVisual);
     }
 
     public void ExecuteInspectionAction()
@@ -57,7 +57,7 @@ public class Painting : Interactable, IPickupable, IInspectable
 
         gameObject.SetActive(false);
     }
-
+   
     public override void Dispose()
     {
         _player = null;

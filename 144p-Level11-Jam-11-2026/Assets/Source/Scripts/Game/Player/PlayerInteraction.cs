@@ -1,3 +1,4 @@
+
 using System;
 using Cinemachine;
 using UnityEngine;
@@ -15,20 +16,26 @@ public class PlayerInteraction : MonoBehaviour, IDisposable
 
     private IEventBus _eventsBus;
     private IInputService _inputService;
+
     private Interactable _currentInteractable;
 
     private bool _isDisposed;
 
-    public void Initialize(Player root, IInputService inputService, IEventBus eventBus)
+    public void Initialize(
+        Player root,
+        IInputService inputService,
+        IEventBus eventBus)
     {
         _root = root;
         _inputService = inputService;
-        _eventsBus = eventBus;      
+        _eventsBus = eventBus;
+
+        _isDisposed = false;
     }
 
     private void Update()
     {
-        if (_isDisposed)
+        if (_isDisposed || _root == null)
             return;
 
         if (!_root.IsActive)
@@ -51,15 +58,25 @@ public class PlayerInteraction : MonoBehaviour, IDisposable
     {
         Interactable detectedInteractable = null;
 
-        Ray ray = new Ray(_playerCam.transform.position, _playerCam.transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, _interactionDistance, _interactionMask, QueryTriggerInteraction.Ignore))
-        {
-            if (hit.transform.TryGetComponent<Interactable>(out Interactable interactable))
-            {
-                if (!interactable.IsActive)
-                    return;
+        Ray ray = new Ray(
+            _playerCam.transform.position,
+            _playerCam.transform.forward
+        );
 
-                detectedInteractable = interactable;
+        if (Physics.Raycast(
+            ray,
+            out RaycastHit hit,
+            _interactionDistance,
+            _interactionMask,
+            QueryTriggerInteraction.Ignore))
+        {
+            if (hit.transform.TryGetComponent<Interactable>(
+                out Interactable interactable))
+            {
+                if (interactable.IsActive)
+                {
+                    detectedInteractable = interactable;
+                }
             }
         }
 
@@ -68,56 +85,76 @@ public class PlayerInteraction : MonoBehaviour, IDisposable
 
     public void OnInteract()
     {
-        if (!_root.IsActive)
+        if (_root == null || !_root.IsActive)
             return;
 
-        _currentInteractable?.Interact(_root);
+        Interactable interactable = _currentInteractable;
+
+        if (interactable == null)
+            return;
+
+        // Сначала убираем подсветку и подсказку.
         ClearInteraction();
+
+        // Затем выполняем действие.
+        interactable.Interact(_root);
     }
 
     private void SetCurrentInteractable(Interactable interactable)
     {
-        // Объект не изменился
-        if (ReferenceEquals(_currentInteractable, interactable))
+        // Если смотрим на тот же объект, ничего не меняем.
+        if (_currentInteractable == interactable)
             return;
 
-        // Потеряли предыдущий объект
+        // Убираем Outline с предыдущего объекта.
         if (_currentInteractable != null)
         {
+            _currentInteractable.ToggleOutline(false);
             OnInteractorLost();
         }
 
+        // Запоминаем новый объект.
         _currentInteractable = interactable;
 
-        // Обнаружили новый объект
+        // Включаем Outline нового объекта.
         if (_currentInteractable != null)
         {
+            _currentInteractable.ToggleOutline(true);
             OnInteractorDetected(_currentInteractable);
         }
     }
 
     private void OnInteractorDetected(Interactable interactable)
     {
-        _eventsBus.Publish(new InteractiorDetectedEvent(_currentInteractable.InteractionText));
+        _eventsBus.Publish(
+            new InteractiorDetectedEvent(interactable.InteractionText)
+        );
     }
 
     private void OnInteractorLost()
-    {      
+    {
         _eventsBus.Publish(new InteractorLostEvent());
     }
 
     private void ClearInteraction()
     {
         SetCurrentInteractable(null);
-    }   
+    }
+
+    private void OnDisable()
+    {
+        ClearInteraction();
+    }
 
     public void Dispose()
     {
         if (_isDisposed)
             return;
+
         _isDisposed = true;
-        enabled = false;
 
         ClearInteraction();
+
+        enabled = false;
     }
 }

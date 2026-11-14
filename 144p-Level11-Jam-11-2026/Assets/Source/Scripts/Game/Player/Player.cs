@@ -68,7 +68,7 @@ public class Player : MonoBehaviour, IDisposable
 
     public void ShowInteractionMessage(string msg)
     {
-        //_root.ShowInteractionMessage(msg);
+        _root.ShowInteractionMessage(msg);
     }
 
     #endregion
