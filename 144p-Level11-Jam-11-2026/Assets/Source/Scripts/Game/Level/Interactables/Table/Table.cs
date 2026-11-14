@@ -38,6 +38,7 @@ public class Table : Interactable
     private void EnterInspection()
     {        
         _isInspecting = true;
+        IsActive = false;
         _root.TryEnterInspectionView();
 
         _tableCamera.gameObject.SetActive(true);
@@ -48,6 +49,7 @@ public class Table : Interactable
         if (!_isInspecting)
             return;
 
+        IsActive = true; 
         _isInspecting = false;
         _root.TryExitInspectionView();
 

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
   m_Name: ShadowsMidtonesHighlights
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ShadowsMidtonesHighlights
-  active: 1
+  active: 0
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 0.74414694, y: 0.819961, z: 1, w: -0.27199998}
+    m_Value: {x: 0.90558684, y: 0.9339308, z: 1, w: -0.71999997}
   midtones:
     m_OverrideState: 1
     m_Value: {x: 0.9754379, y: 1, z: 0.99999976, w: -0.00000002002716}

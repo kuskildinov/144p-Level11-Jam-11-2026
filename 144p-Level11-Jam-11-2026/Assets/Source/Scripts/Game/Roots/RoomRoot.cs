@@ -9,6 +9,8 @@ public class RoomRoot : FrameworkRoot, IComposable, IShutdownable
 {
     [Header("References")]
     [SerializeField] private TableDragController _dragController;
+    [SerializeField] private CodeLockController _codeLockController;
+    [SerializeField] private BoardDragController _boardDragController;
 
     private Interactable[] _interactables;
 
@@ -32,6 +34,12 @@ public class RoomRoot : FrameworkRoot, IComposable, IShutdownable
 
         if(_dragController != null)
             _dragController.Initialize(_inputService);
+
+        if (_codeLockController != null)
+            _codeLockController.Initialize(_inputService);
+
+        if (_boardDragController != null)
+            _boardDragController.Initialize(_inputService);
     }
 
     private void InitializeInteractables()
@@ -53,6 +61,12 @@ public class RoomRoot : FrameworkRoot, IComposable, IShutdownable
         _playerRoot.EnterInspectionMode();
         if (_dragController != null) 
             _dragController.IsActive = true;
+
+        if (_codeLockController != null)
+            _codeLockController.IsActive = true;
+
+        if (_boardDragController != null)
+            _boardDragController.IsActive = true;
     }
 
     public void TryExitInspectionView()
@@ -60,6 +74,12 @@ public class RoomRoot : FrameworkRoot, IComposable, IShutdownable
         _playerRoot.ExitInspectionMode();
         if (_dragController != null) 
             _dragController.IsActive = false;
+
+        if (_codeLockController != null)
+            _codeLockController.IsActive = false;
+
+        if (_boardDragController != null)
+            _boardDragController.IsActive = false;
     }
 
     #region >>> SCENE MANAGER
