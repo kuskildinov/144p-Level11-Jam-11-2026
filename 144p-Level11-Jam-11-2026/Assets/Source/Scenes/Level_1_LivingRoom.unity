@@ -9618,21 +9618,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 158452595967788974, guid: 4250d302a115c2c4aa7f5512f7b16fd9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4631693835106275727, guid: 4250d302a115c2c4aa7f5512f7b16fd9, type: 3}
       propertyPath: m_Name
       value: '[CANVAS]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 5211488232936529960, guid: 4250d302a115c2c4aa7f5512f7b16fd9, type: 3}
-      propertyPath: m_FontData.m_BestFit
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5211488232936529960, guid: 4250d302a115c2c4aa7f5512f7b16fd9, type: 3}
-      propertyPath: m_FontData.m_AlignByGeometry
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6158814459324238817, guid: 4250d302a115c2c4aa7f5512f7b16fd9, type: 3}
       propertyPath: m_Pivot.x

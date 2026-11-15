@@ -355,6 +355,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomRoot
   _dragController: {fileID: 0}
+  _codeLockController: {fileID: 0}
+  _boardDragController: {fileID: 0}
 --- !u!1 &6289439641538458009
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,7 +477,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.084905684, g: 0.084905684, b: 0.084905684, a: 1}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.9372549}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
