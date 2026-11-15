@@ -40,6 +40,7 @@ public class Board : Interactable
             _dragController.IsActive = false;
 
         InitializeItems();
+        _items[0].gameObject.SetActive(true);
         _subscriptionBag.Clear();
         _subscriptionBag.Subscribe<ItemPickUpEvent>(_eventBus,OnItemPickedUp);
     }
@@ -120,7 +121,7 @@ public class Board : Interactable
     {
         foreach (BoardItem item in _items)
         {
-            if (item == null || item == _items[0])
+            if (item == null)
                 continue;
 
             item.Initialize(_root);

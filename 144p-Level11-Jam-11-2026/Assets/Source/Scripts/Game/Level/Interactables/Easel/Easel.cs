@@ -263,6 +263,7 @@ public class Easel : Interactable
 
     private IEnumerator PuzzleCompleteRoutine()
     {
+        yield return new WaitForSecondsRealtime(2f);
         _bedModel.gameObject.SetActive(false);
         _fallAnimation.PlayFall();
         _door.IsActive = true;

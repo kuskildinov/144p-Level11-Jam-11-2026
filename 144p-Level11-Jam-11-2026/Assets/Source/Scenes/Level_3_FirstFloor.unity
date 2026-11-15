@@ -737,7 +737,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 64.81152
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -763,8 +763,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.70710707, z: 0, w: 0.70710653}
-  m_LocalPosition: {x: -0.637, y: 1.55, z: 9.102001}
+  m_LocalRotation: {x: 0, y: 0.8992854, z: 0, w: 0.4373623}
+  m_LocalPosition: {x: -4.004, y: 2.112, z: 18.456}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3153,6 +3153,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -8.7249815e-16
       objectReference: {fileID: 0}
+    - target: {fileID: 1695892981438494425, guid: 55033369d7131954fa633ad59ab7d06e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 91a5d5a9288f8f44f907058c641b8859, type: 2}
     - target: {fileID: 3289410717119142543, guid: 55033369d7131954fa633ad59ab7d06e, type: 3}
       propertyPath: m_Name
       value: DoorLuke
@@ -3369,7 +3373,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: da787839f1a63554899c926ce586960c, type: 2}
+  - {fileID: 2100000, guid: 2416488569b4eec488a688e5c64238df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

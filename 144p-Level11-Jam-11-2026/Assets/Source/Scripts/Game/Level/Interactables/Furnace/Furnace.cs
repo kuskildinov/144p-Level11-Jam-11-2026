@@ -24,6 +24,7 @@ public class Furnace : Interactable
     {
         _root = root;
         _shovleCount = 0;
+        _letter.gameObject.SetActive(false);
     }
 
     public override void Interact(Player player)
@@ -150,8 +151,11 @@ public class Furnace : Interactable
             _root.PlayAllWarkMusic();
             _root.PlaySwitchOnLampSound();
 
+            
             _light.gameObject.SetActive(true);
             _letterLight.gameObject.SetActive(true);
+
+            IsActive = false;
         }
     }
 
@@ -171,6 +175,7 @@ public class Furnace : Interactable
 
     private void ActivateLetter()
     {
+        _letter.gameObject.SetActive(true);
         _letter.IsActive = true;
     }
 
