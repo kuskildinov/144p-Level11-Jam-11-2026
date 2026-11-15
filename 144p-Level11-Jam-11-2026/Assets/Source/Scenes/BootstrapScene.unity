@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ca18867a3ddc445bb6d241dc44edbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: IcePiecesGames.Framework.Core::GameStartup
-  _nextScene: Level_2_Boiler room
+  _nextScene: Level_3_FirstFloor
   _logoSequence: {fileID: 567673942}
 --- !u!1 &226078736
 GameObject:
