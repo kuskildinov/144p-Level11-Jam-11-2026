@@ -106,6 +106,8 @@ public class ItemInspectionController : MonoBehaviour
         if (_actionButtonText != null)
             _actionButtonText.text = item.ActionText;
 
+        _actionButton.gameObject.SetActive(item.NeedAction);
+
         _isInspecting = true;
         _wasRotating = false;
 

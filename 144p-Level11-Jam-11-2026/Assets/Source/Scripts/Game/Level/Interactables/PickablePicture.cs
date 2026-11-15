@@ -5,8 +5,9 @@ public class PickablePicture : Interactable, IPickupable, IInspectable
 {
     [Header("Item Data")]
     [SerializeField] private string _itemId;
-    
+
     [Header("Inspection")]
+    [SerializeField] private bool _needAction = true;
     [SerializeField] private GameObject _inspectionVisual;
     [SerializeField] private string _actionText = "Положить на стол";
 
@@ -16,6 +17,8 @@ public class PickablePicture : Interactable, IPickupable, IInspectable
 
     public string ItemId => _itemId;
     public string ActionText => _actionText;
+
+    public bool NeedAction => _needAction;
 
     public override void Initialize(RoomRoot root)
     {

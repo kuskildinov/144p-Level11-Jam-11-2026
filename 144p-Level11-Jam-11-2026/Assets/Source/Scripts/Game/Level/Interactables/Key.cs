@@ -4,6 +4,7 @@ public class Key : Interactable, IInspectable
 {
     [SerializeField] private RoomDoor _door;
     [Header("Inspection")]
+    [SerializeField] private bool _needAction;
     [SerializeField] private GameObject _inspectionVisual;
     [SerializeField] private string _actionText;
 
@@ -12,6 +13,7 @@ public class Key : Interactable, IInspectable
     private ItemInspectionController _inspectionController;
 
     public string ActionText => _actionText;
+    public bool NeedAction => _needAction;
 
     public override void Initialize(RoomRoot root)
     {

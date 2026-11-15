@@ -102,6 +102,11 @@ public class RoomRoot : FrameworkRoot, IComposable, IShutdownable
             _easelController.IsActive = false;
     }
 
+    public void TrySwitchOnLight()
+    {
+        Debug.Log("¬ключить свет");
+    }
+
     #region >>> SCENE MANAGER
 
     public void TryLoadNextLevel()

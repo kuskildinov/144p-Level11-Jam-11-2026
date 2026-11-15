@@ -13,6 +13,7 @@ public class Player : MonoBehaviour, IDisposable
     [Header("Other")]
     [SerializeField] private CinemachineVirtualCamera _playerCam;
     [SerializeField] private GameObject _lampLight;
+    [SerializeField] private ShovleOnHand _shovle;
 
     private PlayerRoot _root;
        
@@ -20,11 +21,16 @@ public class Player : MonoBehaviour, IDisposable
     private IEventBus _eventBus;
 
     private bool _isActive;
+    private bool _isLightOn;
+    private bool _isShovelOnHands;
+
     private CharacterController _controller;
 
     public bool IsActive => _isActive;
+    public bool IsShovleOnHand => _isShovelOnHands;
     public CinemachineVirtualCamera PlayerCam => _playerCam;
     public CharacterController Controller => _controller;
+    public ShovleOnHand Shovle => _shovle;
 
     public void Initialize(PlayerRoot root, IInputService inputService, IEventBus eventBus)
     {
@@ -47,7 +53,40 @@ public class Player : MonoBehaviour, IDisposable
 
     public void ToggleLampLight(bool value)
     {
+        _isLightOn = value;
         _lampLight.gameObject.SetActive(value);
+        if(_shovle != null && _shovle.gameObject.activeInHierarchy)
+        {
+            _shovle.gameObject.SetActive(!value);
+            _isShovelOnHands = !value;
+        }
+    }
+
+    #endregion
+    #region >>> SHOVLE
+
+    public void ToggleShovleVisibility(bool value)
+    {
+        if (_shovle == null)
+            return;
+
+        _isShovelOnHands = value;
+        _shovle.gameObject.SetActive(value);
+        if (_lampLight != null && _lampLight.gameObject.activeInHierarchy)
+        {
+            _lampLight.gameObject.SetActive(!value);
+            _isLightOn = !value;
+        }
+    }
+
+    public void TryTakeCoal()
+    {
+        _shovle.AddCoal();
+    }
+
+    public void RemoveCoal()
+    {
+        _shovle.RemoveCoal();
     }
 
     #endregion
@@ -62,7 +101,7 @@ public class Player : MonoBehaviour, IDisposable
     {
        _root.OnKeyTaked();
     }
-
+    
     #endregion
     #region >>> INTERACTOR MSG
 
