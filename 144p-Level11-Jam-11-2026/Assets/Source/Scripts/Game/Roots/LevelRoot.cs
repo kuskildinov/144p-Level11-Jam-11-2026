@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 [DependsOn(typeof(PlayerRoot))]
+[DependsOn(typeof(AudioRoot))]
 public class LevelRoot : FrameworkRoot, IComposable, IRunnable
 {
     [SerializeField] private string _nextLevelSceneName;

@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 
 [DependsOn(typeof(PlayerRoot))]
 [DependsOn(typeof(LevelRoot))]
-public class RoomRoot : FrameworkRoot, IComposable, IShutdownable
+[DependsOn(typeof(AudioRoot))]
+public class RoomRoot : FrameworkRoot, IComposable,IRunnable, IShutdownable
 {
     [Header("References")]
     [SerializeField] private TableDragController _dragController;
@@ -71,6 +72,22 @@ public class RoomRoot : FrameworkRoot, IComposable, IShutdownable
 
         if (_easelController != null)
             _easelController.Initialize(_inputService);
+    }
+
+    public void Run()
+    {
+        if (SceneManager.GetActiveScene().name == "Level_1_LivingRoom")
+        {            
+            _playerRoot.PlayVoiceByIndex(0);
+        }
+        else if(SceneManager.GetActiveScene().name == "Level_3_FirstFloor")
+        {
+            _playerRoot.PlayVoiceByIndex(10);
+        }
+        else if (SceneManager.GetActiveScene().name == "Level_4_Basement")
+        {
+            _playerRoot.PlayVoiceByIndex(12);
+        }
     }
 
     private void InitializeInteractables()
@@ -273,4 +290,6 @@ public class RoomRoot : FrameworkRoot, IComposable, IShutdownable
             item.Dispose();
         }
     }
+
+    
 }

@@ -101,27 +101,32 @@ public class Furnace : Interactable
         {
             case 1:
                 {
+                    _player.PlayVoiceByIndex(13);
                     break;
                 }
             case 2:
                 {
-
+                    _player.PlayVoiceByIndex(14);
                     break;
                 }
             case 3:
                 {
+                    _player.PlayVoiceByIndex(15);
                     break;
                 }
             case 4:
                 {
+                    _player.PlayVoiceByIndex(16);
                     break;
                 }
             case 5:
                 {
+                   
                     break;
                 }
             case 6:
                 {
+                   
                     break;
                 }
             case 7:

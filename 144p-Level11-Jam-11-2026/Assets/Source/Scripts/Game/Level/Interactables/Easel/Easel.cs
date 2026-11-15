@@ -29,7 +29,13 @@ public class Easel : Interactable
     [SerializeField] private GameObject _bedModel;
     [SerializeField] private RoomDoor _door;
 
+    [Header("comments")]
+    [SerializeField] private bool _needComment = false;
+    [SerializeField] private int _commentIndex;
+    private bool _isPlayed;
+
     private RoomRoot _root;
+    private Player _player;
     private IEventBus _eventBus;
 
     private readonly SubscriptionBag _subscriptionBag = new SubscriptionBag();
@@ -89,6 +95,7 @@ public class Easel : Interactable
         if (!IsActive || _isInspecting)
             return;
 
+        _player = player;
         EnterInspection();
     }
 
@@ -243,6 +250,13 @@ public class Easel : Interactable
         _isCompleted = true;
 
         Debug.Log("Easel: Puzzle completed!");
+
+        
+        if (_needComment && !_isPlayed)
+        {
+            _isPlayed = true;
+            _player.PlayVoiceByIndex(_commentIndex);
+        }
 
         StartCoroutine(PuzzleCompleteRoutine());
     }

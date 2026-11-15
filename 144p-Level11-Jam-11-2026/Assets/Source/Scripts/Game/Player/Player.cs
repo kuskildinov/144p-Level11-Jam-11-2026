@@ -119,6 +119,11 @@ public class Player : MonoBehaviour, IDisposable
         _root.PlayStepSound(isMove);
     }
 
+    public void PlayVoiceByIndex(int index)
+    {
+        _root.PlayVoiceByIndex(index);
+    }
+
     public void Dispose()
     {
        _interaction.Dispose();

@@ -27,7 +27,8 @@ public class Letter : Interactable, IInspectable
             Debug.LogError($"Painting {name}: Inspection is not configured.");
             return;
         }
-        
+
+        player.PlayVoiceByIndex(17);
         _inspectionController.Open(this, _inspectionVisual);
         _door.IsOpen = true;
     }

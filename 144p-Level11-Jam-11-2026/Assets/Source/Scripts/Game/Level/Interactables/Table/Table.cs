@@ -9,10 +9,14 @@ public class Table : Interactable
     [SerializeField] private DraggablePainting[] _painting;
     [Header("other links")]
     [SerializeField] private KeyCarpet _keyCarpet;
+    [Header("triggers")]
+    [SerializeField] private bool _needComment = false;
         
     private RoomRoot _root;
     private bool _isInspecting;
     private IEventBus _eventBus;
+    private bool _isPlayed;
+
     private readonly SubscriptionBag _subscriptionBag = new SubscriptionBag();
 
     public override void Initialize(RoomRoot root)
@@ -33,6 +37,18 @@ public class Table : Interactable
             return;
 
         EnterInspection();
+
+        if (_needComment && !_isPlayed)
+        {
+            foreach (DraggablePainting item in _painting)
+            {
+                if (!item.gameObject.activeInHierarchy)
+                    return;
+            }
+            
+            _isPlayed = true;
+            player.PlayVoiceByIndex(2);
+        }
     }
 
     private void EnterInspection()

@@ -574,8 +574,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FinalRoot
   _fade: {fileID: 974585228186254468}
   _finalPanel: {fileID: 397046483}
-  _sound_1: {fileID: 0}
+  _sound_1: {fileID: 8300000, guid: 8d1975710c913e24cb9f869596ad9369, type: 3}
   _nextSceneName: MainMenu
+  _source: {fileID: 768699121}
 --- !u!82 &768699121
 AudioSource:
   m_ObjectHideFlags: 0

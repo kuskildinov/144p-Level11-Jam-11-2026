@@ -12,6 +12,11 @@ public class Board : Interactable
     [Header("Controller")]
     [SerializeField] private BoardDragController _dragController;
 
+    [Header("comments")]
+    [SerializeField] private bool _needComment = false;
+    [SerializeField] private int _commentIndex;
+    private bool _isPlayed;
+
     private RoomRoot _root;
     private IEventBus _eventBus;
 
@@ -34,8 +39,6 @@ public class Board : Interactable
         if (_dragController != null)
             _dragController.IsActive = false;
 
-        
-
         InitializeItems();
         _subscriptionBag.Clear();
         _subscriptionBag.Subscribe<ItemPickUpEvent>(_eventBus,OnItemPickedUp);
@@ -47,6 +50,18 @@ public class Board : Interactable
             return;
 
         EnterInspection();
+
+        foreach (BoardItem item in _items)
+        {
+            if (!item.gameObject.activeInHierarchy)
+                return;
+        }
+
+        if (_needComment && !_isPlayed)
+        {
+            _isPlayed = true;
+            player.PlayVoiceByIndex(_commentIndex);
+        }
     }
 
     private void EnterInspection()

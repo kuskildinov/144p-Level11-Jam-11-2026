@@ -8,6 +8,11 @@ public class Boiler : Interactable
     [Header("Controller")]
     [SerializeField] private BoilerInspectionController _controller;
 
+    [Header("comments")]
+    [SerializeField] private bool _needComment = false;
+    [SerializeField] private int _commentIndex;
+    private bool _isPlayed;
+
     private RoomRoot _root;
     private bool _isInspecting;
 
@@ -31,6 +36,12 @@ public class Boiler : Interactable
             return;
 
         EnterInspection();
+
+        if (_needComment && !_isPlayed)
+        {
+            _isPlayed = true;
+            player.PlayVoiceByIndex(_commentIndex);
+        }
     }
 
     private void EnterInspection()

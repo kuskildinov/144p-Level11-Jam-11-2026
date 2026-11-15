@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[DependsOn(typeof(AudioRoot))]
 public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
 {
     private const string FirstPersonInputProfileName = "FirstPerson";
@@ -19,6 +20,7 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
     [SerializeField] private PlayerInterface _interface;
     [SerializeField] private ItemInspectionController _itemInspection;
     [Header("Sounds")]
+    [SerializeField] private AudioSource _voicesSource;
     [SerializeField] private List<AudioClip> _stepsSounds;
     [SerializeField] private float _stepInterval = 1f;
     [SerializeField] private AudioClip _takeCoalSound;
@@ -191,9 +193,11 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
 
     public void PlayVoiceByIndex(int index)
     {
+        Debug.Log(_voicesSounds[index].name);
         if(_voicesSounds[index] != null)
         {
-            _audioService.PlaySfx(_voicesSounds[index]);
+           // _audioService.PlaySfx(_voicesSounds[index]);
+            _voicesSource.PlayOneShot(_voicesSounds[index]);
         }
     }
     #endregion

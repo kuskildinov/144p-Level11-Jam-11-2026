@@ -10,6 +10,7 @@ public class FinalRoot : FrameworkRoot, IComposable, IRunnable
     [SerializeField] private FinalPanel _finalPanel;
     [SerializeField] private AudioClip _sound_1;
     [SerializeField] private string _nextSceneName;
+    [SerializeField] private AudioSource _source;
 
     private SceneTransitionService _sceneTransitionService;
 
@@ -23,7 +24,7 @@ public class FinalRoot : FrameworkRoot, IComposable, IRunnable
 
     public void Run()
     {
-        // Player. _sound_1
+        _source.PlayOneShot(_sound_1);
         _fade.FadeOut(3, () =>
         {
             StartCoroutine(EndingRoutine());
