@@ -54,7 +54,7 @@ public class LevelRoot : FrameworkRoot, IComposable, IRunnable
     public void LoadSceneByName(string name)
     {
         _playerRoot.TogglePlayerActivation(false);
-        _screenFade.FadeIn(3, () =>
+        _screenFade.FadeIn(4, () =>
         {
             LoadNextLevel(name);
         });
@@ -73,6 +73,7 @@ public class LevelRoot : FrameworkRoot, IComposable, IRunnable
 
     private void PlayBackgroundSound()
     {
+        if(_backgroundSound != null)
         _audioService.PlayMusic(_backgroundSound);
         if (_lightningSound != null)
             _audioService.PlaySfx(_lightningSound);

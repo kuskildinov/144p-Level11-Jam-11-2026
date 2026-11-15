@@ -46,6 +46,7 @@ public class Furnace : Interactable
         _shovleCount++;
         _particles.Play();
 
+        _root.PlayNoteSoundByIndex(_shovleCount - 1);
         PlayCommentByIndex();
         CheckSwitchOn();
     }
@@ -140,6 +141,9 @@ public class Furnace : Interactable
             RemoveLamp();
             ActivateLetter();
             DeactivateCoal();
+
+            _root.PlayAllWarkMusic();
+            _root.PlaySwitchOnLampSound();
 
             _light.gameObject.SetActive(true);
             _letterLight.gameObject.SetActive(true);

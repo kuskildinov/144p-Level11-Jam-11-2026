@@ -239,6 +239,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c2aa8c6c7d6a96149806fb29cd9fb852, type: 3}
   - {fileID: 8300000, guid: ec1c91a917f70f7499ee7e6bff99d540, type: 3}
   _stepInterval: 1
+  _takeCoalSound: {fileID: 8300000, guid: 8883d2f675fe2424887565264f0df8a6, type: 3}
+  _removeCoalSound: {fileID: 8300000, guid: 2c39065617ee7b84fa76b826f459e59e, type: 3}
+  _voicesSounds: []
 --- !u!1 &3270564658841661628
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +427,22 @@ MonoBehaviour:
   _turnPhotoSound: {fileID: 8300000, guid: 7a4b776dab8b5804bb5f3a222438834e, type: 3}
   _lockButtonSound: {fileID: 8300000, guid: 4d20585aa4cee284b8b8ee7f73bfb34d, type: 3}
   _lockOpendSound: {fileID: 8300000, guid: 264f87ad1796caf4fa5992f2262d1c3f, type: 3}
+  _easelSound: {fileID: 8300000, guid: e7482b1d26057a64baf5b93fc39a6526, type: 3}
+  _lukeDownSound: {fileID: 8300000, guid: d90f67f65ebb6364b9cb9c25969a73a6, type: 3}
+  _lukeUpSound: {fileID: 8300000, guid: dd15947eaa12d944396ec433428a6df5, type: 3}
+  _takeShovleSound: {fileID: 8300000, guid: 1eb30ba1d0d2fbe4d8fd3b2533e81b5d, type: 3}
+  _allWorkSound: {fileID: 8300000, guid: 25aa01231606b084688b227743499a57, type: 3}
+  _notesSound:
+  - {fileID: 8300000, guid: 9e6c3eaf2a41f034cab37e7dc10cf21a, type: 3}
+  - {fileID: 8300000, guid: 4ec4c02abd88765418f3840cb0b7337b, type: 3}
+  - {fileID: 8300000, guid: df5b7a84e306dd544b9969bbc9c09d70, type: 3}
+  - {fileID: 8300000, guid: 547586dde28f3564f8cd5e4382ac641c, type: 3}
+  - {fileID: 8300000, guid: ee3592b9f58e8134f82398564539b487, type: 3}
+  - {fileID: 8300000, guid: 385266b57c319524c82dbde2b8987869, type: 3}
+  - {fileID: 8300000, guid: 761304551e62fa4428d5a162754de037, type: 3}
+  - {fileID: 8300000, guid: 687034f990db85348be97613fc6bb175, type: 3}
+  _finalOneSound: {fileID: 8300000, guid: d333976858d30d14b859fa049ac56bc1, type: 3}
+  _finakTwoSound: {fileID: 8300000, guid: aa4e26892dad2bc46bd11401b8360fdc, type: 3}
 --- !u!1 &6289439641538458009
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,6 +21,9 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
     [Header("Sounds")]
     [SerializeField] private List<AudioClip> _stepsSounds;
     [SerializeField] private float _stepInterval = 1f;
+    [SerializeField] private AudioClip _takeCoalSound;
+    [SerializeField] private AudioClip _removeCoalSound;
+    [SerializeField] private AudioClip[] _voicesSounds;
 
     private IInputService _inputService;
     private IAudioService _audioService;
@@ -171,6 +174,26 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
             }
 
             yield return new WaitForSeconds(_stepInterval);
+        }
+    }
+
+    public void PlayTakeCoalSound()
+    {
+        if (_takeCoalSound != null)
+            _audioService.PlaySfx(_takeCoalSound);
+    }
+
+    public void PlayRemoveCoalSound()
+    {
+        if (_removeCoalSound != null)
+            _audioService.PlaySfx(_removeCoalSound);
+    }
+
+    public void PlayVoiceByIndex(int index)
+    {
+        if(_voicesSounds[index] != null)
+        {
+            _audioService.PlaySfx(_voicesSounds[index]);
         }
     }
     #endregion

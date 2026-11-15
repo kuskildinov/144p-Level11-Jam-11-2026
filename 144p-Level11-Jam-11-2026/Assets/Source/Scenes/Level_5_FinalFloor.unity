@@ -4123,6 +4123,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 532162186}
     - target: {fileID: 5248107928577151712, guid: 1076c3cb03e3b5049927bfd47d56c2c7, type: 3}
+      propertyPath: _backgroundSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b59f8093195d96c4c94421717d3a7495, type: 3}
+    - target: {fileID: 5248107928577151712, guid: 1076c3cb03e3b5049927bfd47d56c2c7, type: 3}
       propertyPath: _nextLevelSceneName
       value: Level_1_LivingRoom
       objectReference: {fileID: 0}

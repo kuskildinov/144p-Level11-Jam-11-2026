@@ -18,6 +18,14 @@ public class FinalDoor : Interactable
 
     public override void Interact(Player player)
     {
+        if (_endingSceneName == "Final_1")
+        {
+            _root.PlayFinalOneSound();
+        }
+        else
+        {
+            _root.PlayFinalTwoSound();
+        }
         _root.LoadSceneByName(_endingSceneName);
     }
 }

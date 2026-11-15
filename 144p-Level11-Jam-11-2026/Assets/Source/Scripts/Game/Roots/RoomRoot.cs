@@ -3,6 +3,7 @@ using IcePiecesGames.Framework.Core.Events;
 using IcePiecesGames.Framework.Core.Lifecycle;
 using IcePiecesGames.Framework.Input;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DependsOn(typeof(PlayerRoot))]
 [DependsOn(typeof(LevelRoot))]
@@ -24,6 +25,15 @@ public class RoomRoot : FrameworkRoot, IComposable, IShutdownable
     [SerializeField] private AudioClip _turnPhotoSound;
     [SerializeField] private AudioClip _lockButtonSound;
     [SerializeField] private AudioClip _lockOpendSound;
+    [SerializeField] private AudioClip _easelSound;
+    [SerializeField] private AudioClip _lukeDownSound;
+    [SerializeField] private AudioClip _lukeUpSound;
+    [SerializeField] private AudioClip _takeShovleSound;
+    [SerializeField] private AudioClip _allWorkSound;
+    [SerializeField] private AudioClip[] _notesSound;
+    [SerializeField] private AudioClip _finalOneSound;
+    [SerializeField] private AudioClip _finakTwoSound;
+
 
     private Interactable[] _interactables;
 
@@ -129,9 +139,24 @@ public class RoomRoot : FrameworkRoot, IComposable, IShutdownable
 
     public void TryLoadNextLevel()
     {
-        _levelRoot.TryLoadNextLevel();
-
-        PlayNextLocationSound();
+        if (SceneManager.GetActiveScene().name == "Level_3_FirstFloor")
+        {
+            PlayLukeDownSound();
+        }
+        else if(SceneManager.GetActiveScene().name == "Level_4_Basement")
+        {
+            PlayLukeUpSound();
+        }
+        else if (SceneManager.GetActiveScene().name == "Level_5_FinalFloor")
+        {
+           
+        }
+        else
+        {
+            PlayNextLocationSound();
+        }
+        
+        _levelRoot.TryLoadNextLevel();      
     }
 
     #endregion
@@ -189,6 +214,54 @@ public class RoomRoot : FrameworkRoot, IComposable, IShutdownable
     {
         if (_lockOpendSound != null)
             _audioService.PlaySfx(_lockOpendSound);
+    }
+
+    public void PlayEaselSound()
+    {
+        if (_easelSound != null)
+            _audioService.PlaySfx(_easelSound);        
+    }
+
+    public void PlayLukeDownSound()
+    {
+        if (_lukeDownSound != null)
+            _audioService.PlaySfx(_lukeDownSound);
+    }
+
+    public void PlayLukeUpSound()
+    {
+        if (_lukeUpSound != null)
+            _audioService.PlaySfx(_lukeUpSound);
+    }
+
+    public void PlayTakeShovleSound()
+    {
+        if (_takeShovleSound != null)
+            _audioService.PlaySfx(_takeShovleSound);
+    }
+
+    public void PlayAllWarkMusic()
+    {
+        if (_allWorkSound != null)
+            _audioService.PlaySfx(_allWorkSound);
+    }
+
+    public void PlayNoteSoundByIndex(int index)
+    {
+        if (_notesSound[index] != null)
+            _audioService.PlaySfx(_notesSound[index]);
+    }
+
+    public void PlayFinalOneSound()
+    {
+        if (_finalOneSound != null)
+            _audioService.PlaySfx(_finalOneSound);
+    }
+
+    public void PlayFinalTwoSound()
+    {
+        if (_finakTwoSound != null)
+            _audioService.PlaySfx(_finakTwoSound);
     }
 
     #endregion

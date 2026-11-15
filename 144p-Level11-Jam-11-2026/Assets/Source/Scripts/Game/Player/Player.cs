@@ -82,11 +82,13 @@ public class Player : MonoBehaviour, IDisposable
     public void TryTakeCoal()
     {
         _shovle.AddCoal();
+        _root.PlayTakeCoalSound();
     }
 
     public void RemoveCoal()
     {
         _shovle.RemoveCoal();
+        _root.PlayRemoveCoalSound();
     }
 
     #endregion

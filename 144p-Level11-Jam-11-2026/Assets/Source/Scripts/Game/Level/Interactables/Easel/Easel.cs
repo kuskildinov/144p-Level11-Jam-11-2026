@@ -136,6 +136,8 @@ public class Easel : Interactable
             return;
         }
 
+        _root.PlayPaperSound();
+
         List<Vector2> usedPositions = new List<Vector2>();
 
         foreach (EaselPiece piece in _pieces)
