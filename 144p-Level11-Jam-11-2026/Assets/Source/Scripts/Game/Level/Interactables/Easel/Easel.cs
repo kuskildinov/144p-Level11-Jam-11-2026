@@ -1,8 +1,7 @@
-
+using System.Collections;
 using System.Collections.Generic;
 using IcePiecesGames.Framework.Core.Events;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Easel : Interactable
 {
@@ -17,24 +16,23 @@ public class Easel : Interactable
 
     [Header("Controller")]
     [SerializeField] private EaselDragController _controller;
-
+    [SerializeField] private EaselFallAnimation _fallAnimation;
+    [SerializeField] private GameObject _fallVisual;
     [Header("Scatter Settings")]
-    [SerializeField]
-    private Vector2 _scatterSize =
-        new Vector2(2f, 1.5f);
+    [SerializeField] private Vector2 _scatterSize = new Vector2(2f, 1.5f);
 
     [SerializeField] private float _minimumPieceDistance = 0.25f;
     [SerializeField] private float _minimumDistanceFromCorrect = 0.3f;
     [SerializeField] private int _scatterAttempts = 100;
 
     [Header("Completion")]
-    [SerializeField] private UnityEvent _onPuzzleCompleted;
+    [SerializeField] private GameObject _bedModel;
+    [SerializeField] private RoomDoor _door;
 
     private RoomRoot _root;
     private IEventBus _eventBus;
 
-    private readonly SubscriptionBag _subscriptionBag =
-        new SubscriptionBag();
+    private readonly SubscriptionBag _subscriptionBag = new SubscriptionBag();
 
     private bool _isInspecting;
     private bool _isCompleted;
@@ -50,6 +48,8 @@ public class Easel : Interactable
         _isCompleted = false;
 
         IsActive = false;
+        _bedModel.gameObject.SetActive(true);
+        _door.IsActive = false;
 
         if (_easelCamera != null)
             _easelCamera.SetActive(false);
@@ -242,11 +242,24 @@ public class Easel : Interactable
 
         Debug.Log("Easel: Puzzle completed!");
 
-        _onPuzzleCompleted?.Invoke();
+        StartCoroutine(PuzzleCompleteRoutine());
+    }
+
+    private IEnumerator PuzzleCompleteRoutine()
+    {
+        _bedModel.gameObject.SetActive(false);
+        _fallAnimation.PlayFall();
+        _door.IsActive = true;
+        _door.IsOpen = true;
+        yield return new WaitForSecondsRealtime(1f);
+        _fallVisual.gameObject.SetActive(true);
+        ExitInspection();
+        yield return new WaitForSecondsRealtime(1f);
+        IsActive = false;
+        gameObject.SetActive(false);
     }
 
     #endregion
-
     #region >>> EVENTS
 
     private void OnItemPickedUp(ItemPickUpEvent eventData)

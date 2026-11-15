@@ -2531,7 +2531,7 @@ PrefabInstance:
       objectReference: {fileID: 532162186}
     - target: {fileID: 5248107928577151712, guid: 1076c3cb03e3b5049927bfd47d56c2c7, type: 3}
       propertyPath: _nextLevelSceneName
-      value: BootstrapScene
+      value: Level_3_FirstFloor
       objectReference: {fileID: 0}
     - target: {fileID: 5986901979346523230, guid: 1076c3cb03e3b5049927bfd47d56c2c7, type: 3}
       propertyPath: _leaveButton

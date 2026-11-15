@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EaselPiece
   _itemId: puzzle_01
-  _correctPoint: {fileID: 0}
   _snapDuration: 0.25
   _snapEase: 9
 --- !u!65 &1593037872792019902
@@ -69,7 +68,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.34014714, y: 0.32171702, z: 0.045013644}
+  m_Size: {x: 0.33835265, y: 0.33139852, z: 0.045013644}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7656527060798900591
 GameObject:
@@ -100,7 +99,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.19573851, y: 0.19573851, z: 0.01590395}
+  m_LocalScale: {x: 0.32723564, y: 0.32723564, z: 0.026588224}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 869155482227544226}
@@ -209,8 +208,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5392, y: 1.5392, z: 1.5392}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5371351313460101884}
   m_Father: {fileID: 3499825492166145409}
