@@ -9,11 +9,14 @@ EditorBuildSettings:
     path: Assets/Source/Scenes/BootstrapScene.unity
     guid: 757aa736a2671914e96c6c5a4ef84090
   - enabled: 1
+    path: Assets/Source/Scenes/MainMenu.unity
+    guid: a56ac75ccd8dbf84c844871dae1dc343
+  - enabled: 1
     path: Assets/Source/Scenes/Level_1_LivingRoom.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Source/Scenes/Level_2_Boiler room.unity
-    guid: 9d18c2c13282476489cb067dc6375193
+    guid: 9e028a67a2f1eea4d80c2968595bbb51
   - enabled: 1
     path: Assets/Source/Scenes/Level_3_FirstFloor.unity
     guid: 8cff4439ec1fce243a20d6323f9e71a7
@@ -26,5 +29,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Source/Scenes/Final_1.unity
     guid: 8cc1c472cdf60854faf8da0c3ce8b436
+  - enabled: 1
+    path: Assets/Source/Scenes/Final_2.unity
+    guid: fd5f569d86f1c094d999845fe66fbf4f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

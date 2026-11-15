@@ -109,7 +109,7 @@ public class RoomRoot : FrameworkRoot, IComposable, IShutdownable
 
     public void LoadSceneByName(string name)
     {
-
+        _levelRoot.LoadSceneByName(name);
     }
 
     #region >>> SCENE MANAGER

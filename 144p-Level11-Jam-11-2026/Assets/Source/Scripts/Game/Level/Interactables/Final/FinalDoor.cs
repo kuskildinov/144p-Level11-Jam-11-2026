@@ -18,6 +18,6 @@ public class FinalDoor : Interactable
 
     public override void Interact(Player player)
     {
-       
+        _root.LoadSceneByName(_endingSceneName);
     }
 }

@@ -2078,7 +2078,7 @@ Light:
   serializedVersion: 13
   m_Type: 1
   m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
-  m_Intensity: 1.26
+  m_Intensity: 12
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3122,17 +3122,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8913219506618865721, guid: d4496ba0c6690df4db802df2f33a44bc, type: 3}
   m_PrefabInstance: {fileID: 1940251936}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1983903735 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3370220221467510225, guid: 3a621aaf2ae167b45a3f38e46e5d9adb, type: 3}
-  m_PrefabInstance: {fileID: 6763401410186507078}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e58cd41c73f161439d69837274dbd21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EaselDragController
 --- !u!114 &2060215263 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8111868078229962835, guid: 4250d302a115c2c4aa7f5512f7b16fd9, type: 3}
@@ -4120,7 +4109,7 @@ PrefabInstance:
     - target: {fileID: 4920288084882168889, guid: 1076c3cb03e3b5049927bfd47d56c2c7, type: 3}
       propertyPath: _easelController
       value: 
-      objectReference: {fileID: 1983903735}
+      objectReference: {fileID: 0}
     - target: {fileID: 4920288084882168889, guid: 1076c3cb03e3b5049927bfd47d56c2c7, type: 3}
       propertyPath: _codeLockController
       value: 
@@ -4424,7 +4413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5280504596356661432, guid: aeb4aadd80a6bc2438c52569ade931d1, type: 3}
       propertyPath: _endingSceneName
-      value: Final_1
+      value: Final_2
       objectReference: {fileID: 0}
     - target: {fileID: 5280504596356661432, guid: aeb4aadd80a6bc2438c52569ade931d1, type: 3}
       propertyPath: _outlineMaterial
@@ -6022,6 +6011,10 @@ PrefabInstance:
     - target: {fileID: 1972564600813896286, guid: fa794e83729768147a5679c7e137a3f6, type: 3}
       propertyPath: m_Name
       value: '[POST PROCESS]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972564600813896286, guid: fa794e83729768147a5679c7e137a3f6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6106772893772299389, guid: fa794e83729768147a5679c7e137a3f6, type: 3}
       propertyPath: m_LocalPosition.x
