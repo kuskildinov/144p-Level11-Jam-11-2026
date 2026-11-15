@@ -737,7 +737,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 64.81152
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -763,8 +763,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.70710707, z: 0, w: 0.70710653}
-  m_LocalPosition: {x: -0.637, y: 1.55, z: 9.102001}
+  m_LocalRotation: {x: 0, y: 0.8992854, z: 0, w: 0.4373623}
+  m_LocalPosition: {x: -4.004, y: 2.112, z: 18.456}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4028,7 +4028,7 @@ PrefabInstance:
       objectReference: {fileID: 532162186}
     - target: {fileID: 5248107928577151712, guid: 1076c3cb03e3b5049927bfd47d56c2c7, type: 3}
       propertyPath: _nextLevelSceneName
-      value: Level_1_LivingRoom
+      value: Level_4_Basement
       objectReference: {fileID: 0}
     - target: {fileID: 5986901979346523230, guid: 1076c3cb03e3b5049927bfd47d56c2c7, type: 3}
       propertyPath: _leaveButton

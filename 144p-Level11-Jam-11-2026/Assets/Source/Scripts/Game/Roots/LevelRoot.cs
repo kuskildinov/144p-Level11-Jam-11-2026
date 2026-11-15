@@ -37,13 +37,22 @@ public class LevelRoot : FrameworkRoot, IComposable, IRunnable
         _playerRoot.TogglePlayerActivation(false);
         _screenFade.FadeIn(3, () =>
         {
-            LoadNextLevel();
+            LoadNextLevel(_nextLevelSceneName);
         });
     }
 
-    private async Task LoadNextLevel()
+    public void LoadSceneByName(string name)
     {
-        var result = await _sceneTransitionService.LoadSceneAsync(_nextLevelSceneName);
+        _playerRoot.TogglePlayerActivation(false);
+        _screenFade.FadeIn(3, () =>
+        {
+            LoadNextLevel(name);
+        });
+    }
+
+    private async Task LoadNextLevel(string name)
+    {
+        var result = await _sceneTransitionService.LoadSceneAsync(name);
         if(!result.Success)
         {
             Debug.LogException(result.Error);

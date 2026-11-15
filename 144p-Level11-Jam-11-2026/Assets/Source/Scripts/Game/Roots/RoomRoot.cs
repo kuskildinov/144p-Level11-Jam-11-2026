@@ -107,6 +107,11 @@ public class RoomRoot : FrameworkRoot, IComposable, IShutdownable
         Debug.Log("¬ключить свет");
     }
 
+    public void LoadSceneByName(string name)
+    {
+
+    }
+
     #region >>> SCENE MANAGER
 
     public void TryLoadNextLevel()
