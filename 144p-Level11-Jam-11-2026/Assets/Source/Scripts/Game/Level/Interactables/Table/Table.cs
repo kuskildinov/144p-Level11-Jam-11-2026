@@ -68,6 +68,8 @@ public class Table : Interactable
                     IsActive = true;
 
                 painting.gameObject.SetActive(true);
+                _root.PlayPaperSound();
+
                 if (CheckAllPaintingsOnTable())
                 {
                     _keyCarpet.IsActive = true;

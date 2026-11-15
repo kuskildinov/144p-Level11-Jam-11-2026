@@ -24,13 +24,14 @@ public class Lamp : Interactable
         {
             player.ToggleLampLight(true);
             this.gameObject.SetActive(false);
-
+            _root.PlayTakeLampSound();
             if(_shovle != null)
                 _shovle.gameObject.SetActive(true);
         }
         else
         {
             ToggleLight(true);
+            _root.PlaySwitchOnLampSound();
             _interactionText = "Взять лампу";
         }
     }

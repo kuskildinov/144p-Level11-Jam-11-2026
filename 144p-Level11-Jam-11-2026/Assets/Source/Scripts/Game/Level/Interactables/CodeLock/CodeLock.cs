@@ -161,6 +161,8 @@ public class CodeLock : Interactable
         // Возвращаем визуальные элементы в исходное положение.
         ResetDigitVisual(section);
 
+        _root.PlayLockButtonSound();
+
         int oldValue = section.Value;
         int newValue = (oldValue + direction + 10) % 10;
 
@@ -252,6 +254,7 @@ public class CodeLock : Interactable
 
         _door.IsOpen = true;
         _animator.SetBool(AnimatorOpenParam, true);
+        _root.PlayLockOpendSound();
     }
 
     public void ResetLock()

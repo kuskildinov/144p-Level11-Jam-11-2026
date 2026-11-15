@@ -112,6 +112,11 @@ public class Player : MonoBehaviour, IDisposable
 
     #endregion
 
+    public void PlayStepSound(bool isMove)
+    {
+        _root.PlayStepSound(isMove);
+    }
+
     public void Dispose()
     {
        _interaction.Dispose();

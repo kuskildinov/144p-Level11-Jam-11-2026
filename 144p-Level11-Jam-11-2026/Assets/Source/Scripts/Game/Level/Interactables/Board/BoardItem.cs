@@ -33,8 +33,12 @@ public class BoardItem : MonoBehaviour
         _rotationTween.IsActive() &&
         _rotationTween.IsPlaying();
 
-    private void Awake()
+    private RoomRoot _root;
+
+    public void Initialize(RoomRoot root)
     {
+        _root = root;
+
         if (_visual == null)
             _visual = transform;
 
@@ -95,6 +99,8 @@ public class BoardItem : MonoBehaviour
     {
         if (IsRotating)
             return;
+
+        _root.PlayTurnPhotoSound();
 
         _isFlipped = !_isFlipped;
 

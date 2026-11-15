@@ -34,6 +34,7 @@ public class Key : Interactable, IInspectable
 
         _player = player;
         _inspectionController.Open(this, _inspectionVisual);       
+        _root.PlayKeySound();
     }
 
     public void ExecuteInspectionAction()

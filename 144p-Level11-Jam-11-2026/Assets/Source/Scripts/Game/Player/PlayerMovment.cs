@@ -48,6 +48,12 @@ public class PlayerMovment : MonoBehaviour
         _verticalVelocity += _gravity * Time.deltaTime;
         Vector3 velocity = direction * _moveSpeed + Vector3.up * _verticalVelocity;
         _controller.Move(velocity * Time.deltaTime);
+
+        bool isMoving =
+       direction.sqrMagnitude > 0.01f &&
+       _controller.isGrounded;
+
+        _root.PlayStepSound(isMoving);
     }
 
     private void HandleLook()

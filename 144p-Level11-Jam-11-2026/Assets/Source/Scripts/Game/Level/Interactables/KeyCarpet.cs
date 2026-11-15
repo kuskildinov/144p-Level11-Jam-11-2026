@@ -8,8 +8,11 @@ public class KeyCarpet : Interactable
     [Header("Key")]
     [SerializeField] private Key _key;
 
+    private RoomRoot _root;
+
     public override void Initialize(RoomRoot root)
     {
+        _root = root;
         _key.Initialize(root);
         _key.IsActive = false;
         IsActive = false;
@@ -25,6 +28,8 @@ public class KeyCarpet : Interactable
 
     private void OpenCarpet()
     {
+        _root.PlayCarpetSound();
+
         _normalVisual.gameObject.SetActive(false);
         _opendVisual.gameObject.SetActive(true);
         _key.gameObject.SetActive(true);

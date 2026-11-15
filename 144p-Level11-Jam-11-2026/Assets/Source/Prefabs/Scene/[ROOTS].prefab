@@ -89,6 +89,7 @@ Transform:
   - {fileID: 2963767675878024856}
   - {fileID: 4695760659218134601}
   - {fileID: 8113673961519077764}
+  - {fileID: 2483775224539851734}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4269517981974543089
@@ -135,6 +136,55 @@ Transform:
   - {fileID: 6964696026906218128}
   m_Father: {fileID: 4004565906487993323}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2347997967136217304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2483775224539851734}
+  - component: {fileID: 3898937618241284504}
+  m_Layer: 0
+  m_Name: AudioRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2483775224539851734
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2347997967136217304}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8502799763887501780}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3898937618241284504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2347997967136217304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b17291106fa5b4db1d7fadfd13d798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: IcePiecesGames.Framework.Audio::IcePiecesGames.Framework.Audio.AudioRoot
+  _initialSfxSources: 5
+  _maxSfxSources: 20
+  _masterVolume: 0.486
+  _musicVolume: 0.481
+  _sfxVolume: 0.333
 --- !u!1 &2544694011351220375
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,6 +233,12 @@ MonoBehaviour:
   _player: {fileID: 0}
   _interface: {fileID: 0}
   _itemInspection: {fileID: 5986901979346523230}
+  _stepsSounds:
+  - {fileID: 8300000, guid: bbeeb18f0f9e0b841a10a2c7a042e202, type: 3}
+  - {fileID: 8300000, guid: 4153c5f2069574241b651d5db011a202, type: 3}
+  - {fileID: 8300000, guid: c2aa8c6c7d6a96149806fb29cd9fb852, type: 3}
+  - {fileID: 8300000, guid: ec1c91a917f70f7499ee7e6bff99d540, type: 3}
+  _stepInterval: 1
 --- !u!1 &3270564658841661628
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +413,17 @@ MonoBehaviour:
   _dragController: {fileID: 0}
   _codeLockController: {fileID: 0}
   _boardDragController: {fileID: 0}
+  _boilerController: {fileID: 0}
+  _easelController: {fileID: 0}
+  _paperSound: {fileID: 8300000, guid: 05d107f4ac2364c47b31305701577c7d, type: 3}
+  _switchOnLampSound: {fileID: 8300000, guid: f4f1e01bf07abbc42bcad448dd057c69, type: 3}
+  _takeLampSound: {fileID: 8300000, guid: 4ae3d85d67d5d244a8aee43f2d43d923, type: 3}
+  _carpetSound: {fileID: 8300000, guid: cbb4dba68d53f89428ed8bec7c5691ff, type: 3}
+  _keySound: {fileID: 8300000, guid: 74ae63a88c9c6d544a4ff565dcdb29a7, type: 3}
+  _doorOpenSound: {fileID: 8300000, guid: ad9b3225f824f9f429e60800639ab3f3, type: 3}
+  _turnPhotoSound: {fileID: 8300000, guid: 7a4b776dab8b5804bb5f3a222438834e, type: 3}
+  _lockButtonSound: {fileID: 8300000, guid: 4d20585aa4cee284b8b8ee7f73bfb34d, type: 3}
+  _lockOpendSound: {fileID: 8300000, guid: 264f87ad1796caf4fa5992f2262d1c3f, type: 3}
 --- !u!1 &6289439641538458009
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,6 +470,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelRoot
   _nextLevelSceneName: Level_2_Boiler room
   _screenFade: {fileID: 0}
+  _backgroundSound: {fileID: 8300000, guid: f8ab5ad6b50a2ab4bae1946af5124aa9, type: 3}
+  _lightningSound: {fileID: 0}
 --- !u!1 &8559891316962161339
 GameObject:
   m_ObjectHideFlags: 0

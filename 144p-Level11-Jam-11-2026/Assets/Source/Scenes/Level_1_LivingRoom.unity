@@ -7827,6 +7827,10 @@ PrefabInstance:
       propertyPath: _screenFade
       value: 
       objectReference: {fileID: 532162186}
+    - target: {fileID: 5248107928577151712, guid: 1076c3cb03e3b5049927bfd47d56c2c7, type: 3}
+      propertyPath: _lightningSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c5d10e9ea75fc3478d7a30acd8de6e3, type: 3}
     - target: {fileID: 5986901979346523230, guid: 1076c3cb03e3b5049927bfd47d56c2c7, type: 3}
       propertyPath: _leaveButton
       value: 

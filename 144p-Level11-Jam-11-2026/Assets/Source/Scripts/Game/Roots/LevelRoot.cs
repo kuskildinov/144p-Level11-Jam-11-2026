@@ -1,3 +1,4 @@
+using IcePiecesGames.Framework.Audio;
 using IcePiecesGames.Framework.Core.Lifecycle;
 using IcePiecesGames.Framework.Core.SceneManagement;
 using System.Threading.Tasks;
@@ -8,8 +9,13 @@ public class LevelRoot : FrameworkRoot, IComposable, IRunnable
 {
     [SerializeField] private string _nextLevelSceneName;
     [SerializeField] private ScreenFade _screenFade;
+    [Header("Sounds")]
+    [SerializeField] private AudioClip _backgroundSound;
+    [SerializeField] private AudioClip _lightningSound;
 
     private SceneTransitionService _sceneTransitionService;
+    private IAudioService _audioService;
+
     private PlayerRoot _playerRoot;
 
     public void Compose()
@@ -17,6 +23,7 @@ public class LevelRoot : FrameworkRoot, IComposable, IRunnable
         _playerRoot = Context.GetRoot<PlayerRoot>();
 
         _sceneTransitionService = Context.GetService<SceneTransitionService>();
+        _audioService = Context.GetService<IAudioService>();
 
         _screenFade.Initialize();
         _screenFade.SetAlpha(1f);
@@ -28,8 +35,11 @@ public class LevelRoot : FrameworkRoot, IComposable, IRunnable
         {
             _playerRoot.TogglePlayerActivation(true);
         });
+
+        PlayBackgroundSound();
     }
 
+    #region >>> SCENE MANAGMENT
     public void TryLoadNextLevel()
     {
         // Play open door sound
@@ -58,4 +68,15 @@ public class LevelRoot : FrameworkRoot, IComposable, IRunnable
             Debug.LogException(result.Error);
         }
     }
+    #endregion
+    #region >>> SOUNDS
+
+    private void PlayBackgroundSound()
+    {
+        _audioService.PlayMusic(_backgroundSound);
+        if (_lightningSound != null)
+            _audioService.PlaySfx(_lightningSound);
+    }
+
+    #endregion
 }

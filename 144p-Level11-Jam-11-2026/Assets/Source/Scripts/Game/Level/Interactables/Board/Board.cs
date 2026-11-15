@@ -34,14 +34,9 @@ public class Board : Interactable
         if (_dragController != null)
             _dragController.IsActive = false;
 
-        foreach (BoardItem item in _items)
-        {
-            if (item == null || item == _items[0])
-                continue;
+        
 
-            item.gameObject.SetActive(false);
-        }
-
+        InitializeItems();
         _subscriptionBag.Clear();
         _subscriptionBag.Subscribe<ItemPickUpEvent>(_eventBus,OnItemPickedUp);
     }
@@ -90,6 +85,7 @@ public class Board : Interactable
 
         string itemId = eventData.PickupItem.ItemId;
 
+        _root.PlayPaperSound();
         foreach (BoardItem item in _items)
         {
             if (item == null || item.ItemId != itemId)
@@ -102,6 +98,18 @@ public class Board : Interactable
             }
 
             return;
+        }
+    }
+
+    private void InitializeItems()
+    {
+        foreach (BoardItem item in _items)
+        {
+            if (item == null || item == _items[0])
+                continue;
+
+            item.Initialize(_root);
+            item.gameObject.SetActive(false);
         }
     }
 

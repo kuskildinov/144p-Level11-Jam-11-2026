@@ -1,9 +1,12 @@
-
+using IcePiecesGames.Framework.Audio;
 using IcePiecesGames.Framework.Core.Events;
 using IcePiecesGames.Framework.Core.Lifecycle;
 using IcePiecesGames.Framework.Input;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
 {
@@ -15,15 +18,22 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
     [SerializeField] private Player _player;
     [SerializeField] private PlayerInterface _interface;
     [SerializeField] private ItemInspectionController _itemInspection;
+    [Header("Sounds")]
+    [SerializeField] private List<AudioClip> _stepsSounds;
+    [SerializeField] private float _stepInterval = 1f;
 
     private IInputService _inputService;
+    private IAudioService _audioService;
     private IEventBus _eventBus;
+
+    private Coroutine _stepsCoroutine;
 
     public IInputService InputService => _inputService;
 
     public void Compose()
     {
         _inputService = Context.GetService<IInputService>();
+        _audioService = Context.GetService<IAudioService>();
         _eventBus = Context.GetService<IEventBus>();
 
         _player.Initialize(this, _inputService, _eventBus);
@@ -129,6 +139,41 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
     }
 
     #endregion
+    #region >>> SOUNDS
+
+    public void PlayStepSound(bool value)
+    {
+        if (value)
+        {
+            if (_stepsCoroutine != null)
+                return;
+
+            _stepsCoroutine = StartCoroutine(PlayStepsRoutine());
+        }
+        else
+        {
+            if (_stepsCoroutine == null)
+                return;
+
+            StopCoroutine(_stepsCoroutine);
+            _stepsCoroutine = null;
+        }
+    }
+
+    private IEnumerator PlayStepsRoutine()
+    {
+        while (true)
+        {
+            if (_stepsSounds != null && _stepsSounds.Count > 0)
+            {
+                int rand = Random.Range(0, _stepsSounds.Count);
+                _audioService.PlaySfx(_stepsSounds[rand]);
+            }
+
+            yield return new WaitForSeconds(_stepInterval);
+        }
+    }
+    #endregion
     #region EVENTS
 
     private void SubscribeToEvents()
@@ -148,6 +193,7 @@ public class PlayerRoot : FrameworkRoot, IComposable, IRunnable, IShutdownable
         UnSubscribeToEvents();
         _player.Dispose();
         _interface.Dispose();
+        PlayStepSound(false);
     }
 }
 
